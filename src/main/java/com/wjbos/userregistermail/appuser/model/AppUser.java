@@ -1,5 +1,6 @@
-package com.wjbos.userregistermail.appuser;
+package com.wjbos.userregistermail.appuser.model;
 
+import com.wjbos.userregistermail.appuser.enums.AppUserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,6 +33,7 @@ public class AppUser implements UserDetails {
     private String username;
     private String password;
     private String email;
+    @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean isLocked;
     private Boolean isEnabled;
