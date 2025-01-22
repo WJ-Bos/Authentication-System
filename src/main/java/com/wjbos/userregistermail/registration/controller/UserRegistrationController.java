@@ -3,8 +3,6 @@ package com.wjbos.userregistermail.registration.controller;
 import com.wjbos.userregistermail.registration.dto.RegistrationRequest;
 import com.wjbos.userregistermail.registration.service.RegisterUserService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,11 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class UserRegistrationController {
 
-    RegisterUserService registerUserService;
-
-    public UserRegistrationController() {
-        this.registerUserService = new RegisterUserService();
-    }
+    private RegisterUserService registerUserService;
 
     public String registerUser(@RequestBody RegistrationRequest request){
         return registerUserService.register(request);
