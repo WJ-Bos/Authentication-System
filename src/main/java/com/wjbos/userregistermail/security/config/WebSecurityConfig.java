@@ -2,6 +2,7 @@ package com.wjbos.userregistermail.security.config;
 
 import com.wjbos.userregistermail.appuser.service.AppUserService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,10 +14,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @AllArgsConstructor
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig {
 
-    private final AppUserService appUserService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private AppUserService appUserService;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
