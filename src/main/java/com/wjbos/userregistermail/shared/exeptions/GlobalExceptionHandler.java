@@ -1,5 +1,6 @@
-package com.wjbos.userregistermail.exeptions;
+package com.wjbos.userregistermail.shared.exeptions;
 
+import com.wjbos.userregistermail.registration.response.EmailInUseResponse;
 import com.wjbos.userregistermail.registration.response.InvalidEmailResponse;
 import com.wjbos.userregistermail.shared.response.GlobalErrorResponse;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,16 @@ public class GlobalExceptionHandler {
                 ex.getMessage()
         );
         return new ResponseEntity<>(invalidEmailResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmailAlreadyInUseException.class)
+    public ResponseEntity<EmailInUseResponse> handleEmailAlreadyInUse(EmailAlreadyInUseException e, WebRequest request){
+        EmailInUseResponse emailInUseResponse = new EmailInUseResponse(
+                HttpStatus.BAD_REQUEST,
+                e.getMessage(),
+                LocalDateTime.now()
+        );
+        return new ResponseEntity<>(emailInUseResponse, HttpStatus.BAD_REQUEST);
     }
 
 }
